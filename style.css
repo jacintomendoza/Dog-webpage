@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root{
+  --primary-color: #130d61;
+  --secondary-color: #e29d9dec;
+}
+
+body {
+  background-color: var(--secondary-color);
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/686/355/705/paw-print-background-surface-wallpaper-preview.jpg);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+header {
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  height: 7rem;
+}
+
+header form{
+  display: flex;
+  justify-content: right;
+}
+
+header .title{
+  color: #fff;
+  justify-content: left;
+  font-family: 'Lucida Handwriting', cursive;
+}
+
+/* DOG =================================================== */
+
+/* .search{
+  background-color: transparent;
+  border: 5px solid #f06c6c9a;
+  border-radius: 30px;
+  font-family: 1rem;
+  font-size: 1rem;
+  padding: 1.3rem 1rem;
+  color: #fff;
+}
+
+.search::placeholder{
+  color: white;
+}
+
+.search:focus{
+  outline: none;
+  background-color: var(--primary-color);
+} */
+
+#animals{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dog{
+  width: 300px;
+  margin: 1rem;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.dog img{
+  width: 100%;
+}
+
+.dog-info{
+  color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem 1rem;
+  letter-spacing: .5px;;
+}
+
+dog-info h3{
+  margin-top: 0;
+}
+
+.dog-info span{
+  background-color: var(--primary-color);
+  padding: .25rem .5rem;
+  border-radius: 3px;
+  font-weight: gold;
+}
+
+.overview{
+  background-color: rgb(196, 184, 132);
+  padding: 2rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  max-height: 100%;
+  transform: translateY(100%);
+  transition: transform .3s ease-in;
+}
+
+.dog:hover .overview{
+  transform: translateY(0);
+}
+
+/* NOTES =================================================== */
+
+.add {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #9ec862;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.add:active {
+  transform: scale(0.98);
+}
+
+.note {
+  background-color: #fff;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+  margin: 30px 20px;
+  height: 400px;
+  width: 400px;
+  overflow-y: scroll;
+  display: inline-block;
+}
+
+.note .tools {
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.note .tools button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.note textarea {
+  outline: none;
+  font-family: inherit;
+  font-size: 1.2rem;
+  border: none;
+  height: 400px;
+  width: 100%;
+  padding: 20px;
+}
+
+.animals {
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* NAVIGATION =================================================== */
+
+nav{
+  background-color: var(--secondary-color);
+  padding: 20px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0,0,0.2);
+  transition: width .6s linear;
+}
+
+nav.active{
+  width: 350px;
+
+}
+
+nav ul{
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 0;
+  transition: width .6s linear;
+}
+
+nav.active ul{
+  width: 100%;
+}
+
+nav ul li{
+  transform: rotateY(0deg);
+  opacity: 0;
+  transition: transform .6s linear, opacity 0.6s linear;
+}
+
+nav.active ul li{
+  transform: rotateY(360deg);
+  opacity: 1;
+}
+
+/* Text specifications */
+nav ul a{ 
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.icon{
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  height: 30px;
+  width: 30px;
+}
+
+.icon:focus{
+  outline: 0;
+}
+
+.icon .line{
+  background-color: #fff;
+  height: 2px;
+  width: 20px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  transition: transform 0.6s linear;
+}
+
+.icon .line2{
+  top: auto;
+  bottom: 10px;
+}
+
+nav.active .icon .line1{
+  transform: rotate(-765deg) translateY(5.5px);
+}
+
+nav.active .icon .line2{
+  transform: rotate(765deg) translateY(-5.5px);
+}
