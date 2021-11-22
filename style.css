@@ -59,6 +59,7 @@ header .title{
 #animals{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .dog{
@@ -71,12 +72,16 @@ header .title{
   border-radius: 3px;
 }
 
+.dog.active{
+  background-color: rgb(93, 196, 255);
+}
+
 .dog img{
   width: 100%;
 }
 
 .dog-info{
-  color: #eee;
+  color: rgb(238, 238, 238);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,6 +98,12 @@ dog-info h3{
   padding: .25rem .5rem;
   border-radius: 3px;
   font-weight: gold;
+}
+
+.dog-bookmark{
+  position: absolute;
+  top: 1.5px;
+  right: 1.5px;
 }
 
 .overview{
@@ -137,6 +148,7 @@ dog-info h3{
   width: 400px;
   overflow-y: scroll;
   display: inline-block;
+  /* justify-content: center; */
 }
 
 .note .tools {
@@ -189,7 +201,6 @@ nav{
 
 nav.active{
   width: 350px;
-
 }
 
 nav ul{

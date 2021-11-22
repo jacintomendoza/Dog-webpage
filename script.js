@@ -34,6 +34,7 @@ function showDogs(dogs) {
             <div class="dog-info">
                 <h3>${name}</h3>
             </div>
+            <button class="dog-bookmark"><i class="far fa-bookmark"></i></button>
             <div class="overview">
                 <b>Breed Group:  </b>${breed_group}<br>
                 <b>Lifespan:  </b>${life_span}<br>
@@ -42,9 +43,14 @@ function showDogs(dogs) {
                 <b>Origin: </b>${origin}<br>
             </div>
         `
-        // main.appendChild(dogEl);
-    document.getElementById("animals").appendChild(dogEl);
+        // main.appendChild(dogEl); // uDemysoln
 
+        const bookmarkBtn = dogEl.querySelector('.dog-bookmark')
+        bookmarkBtn.addEventListener('click', () => {
+            dogEl.classList.toggle('active')
+        })
+
+    document.getElementById("animals").appendChild(dogEl);
     })
 
     // document.getElementById("animals").appendChild(dogEl);
