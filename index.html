@@ -43,6 +43,26 @@
       <i class="fas fa-plus"></i> Add note
     </button>
 
+    <!-- FILTER -->
+    <form id="filter">
+      <input type="radio" id="none" name="size" value="none">
+        <label for="none">None</label><br/>
+
+      <input type="radio" id="small" name="size" value="small">
+        <label for="small">Small</label><br/>
+
+      <input type="radio" id="medium" name="size" value="medium">
+        <label for="medium">Medium</label><br/>
+
+      <input type="radio" id="large" name="size" value="large">
+        <label for="large">Large</label><br/>
+
+      <input type="radio" id="xlarge" name="size" value="xlarge">
+          <label for="large">xLarge</label><br/>
+     
+    </form>
+    <button type="button" onclick=" checkButton()"> Submit </button>  
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.min.js"></script>
 
     <!-- DOG APPLICATION -->
@@ -58,11 +78,6 @@
         </div>
       </div> -->
     </main>
-
-    
-
-    
-
     <script src="script.js"></script>
   </body>
 </html>

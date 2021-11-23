@@ -104,6 +104,7 @@ dog-info h3{
   position: absolute;
   top: 1.5px;
   right: 1.5px;
+  cursor: pointer;
 }
 
 .overview{
@@ -120,6 +121,20 @@ dog-info h3{
 
 .dog:hover .overview{
   transform: translateY(0);
+}
+
+/* FILTER =================================================== */
+
+.filter {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  /* background-color: #9ec862; */
+  /* color: rgb(0, 214, 11); */
+  /* border: none; */
+  /* border-radius: 3px; */
+  /* padding: 0.5rem 1rem; */
+  /* cursor: pointer; */
 }
 
 /* NOTES =================================================== */

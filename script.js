@@ -29,7 +29,9 @@ function showDogs(dogs) {
         const dogEl = document.createElement('div')
         dogEl.classList.add('dog')
 
-        dogEl.innerHTML = `
+        // Maybe run a compare function here for the filter?
+        if(dogfilter(weight.imperial)){
+            dogEl.innerHTML = `
             <img src="${image.url}" alt="${name}">
             <div class="dog-info">
                 <h3>${name}</h3>
@@ -43,17 +45,18 @@ function showDogs(dogs) {
                 <b>Origin: </b>${origin}<br>
             </div>
         `
+
         // main.appendChild(dogEl); // uDemysoln
 
+        // DOG BOOKMARK //////////////////////////////////
         const bookmarkBtn = dogEl.querySelector('.dog-bookmark')
         bookmarkBtn.addEventListener('click', () => {
             dogEl.classList.toggle('active')
         })
+        }
 
     document.getElementById("animals").appendChild(dogEl);
     })
-
-    // document.getElementById("animals").appendChild(dogEl);
 }
 
 form.addEventListener('submit', (e) => {
@@ -155,3 +158,55 @@ toggle.addEventListener('click', () => {
 // api.addEventListener('click', () => {
 //     window.location.href('https://www.thedogapi.com')
 // })
+
+// FILTER /////////////////////////////////////////////////////////////
+
+
+// Small dogs. 2 to 22 pounds 
+// Medium dogs. 24 to 57 pounds
+// Large dogs. 59 to 99 pounds
+// Giant or Extra Large dogs. 100 or more pounds
+
+checkButton()
+
+function dogfilter(weight){
+    
+    let size = checkButton()
+    let firstWord = weight.split(" ")[0]
+    
+    // console.log(firstWord)
+    
+    console.log("size " + size)
+    console.log("weight " + firstWord)
+    if(size <= weight){
+        return true
+    }
+    
+    return true
+}
+
+function checkButton(){
+    if(document.getElementById('none').checked){
+        console.log("none")
+        return 0
+    }
+    else if(document.getElementById('small').checked){
+        console.log("small")
+        return 22
+    }
+    else if(document.getElementById('medium').checked){
+        console.log("medium")
+        return 57
+    }
+    else if(document.getElementById('large').checked){
+        console.log("large")
+        return 99
+    }
+    else if(document.getElementById('xlarge').checked){
+        console.log("xlarge")
+        return 300
+    }
+    else{
+        return 0
+    }
+}
