@@ -20,13 +20,15 @@ async function getDogs(url) {
 
     // console.log(data)
 
-    // Maybe run a compare function here for the filter?
     filtered_data = dogfilter(data)
     showDogs(filtered_data)
 }
 
 function showDogs(dogs) {
     main.innerHTML = ''
+
+    remove_dogs()
+    
 
     dogs.forEach((dog) => {
         const {name, image, breed_group, life_span, weight, temperament, origin} = dog
@@ -217,5 +219,17 @@ function checkButton(){
     else{
         radio_result = "none"
     }
+    
     getDogs(API_URL)
+}
+
+function remove_dogs(){
+    dogDivs = document.getElementsByClassName("dog")
+
+    while(dogDivs.length>0){
+        dogDivs[0].remove();
+    }
+
+    // var doggg = document.getElementById("animals")
+    // doggg.remove()
 }
