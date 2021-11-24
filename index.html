@@ -45,23 +45,26 @@
 
     <!-- FILTER -->
     <form id="filter">
-      <input type="radio" id="none" name="size" value="none">
+      <div id="filter-title">Filter</div>
+      <input type="radio" id="none" name="breedgroup" value="none">
         <label for="none">None</label><br/>
-
-      <input type="radio" id="small" name="size" value="small">
-        <label for="small">Small</label><br/>
-
-      <input type="radio" id="medium" name="size" value="medium">
-        <label for="medium">Medium</label><br/>
-
-      <input type="radio" id="large" name="size" value="large">
-        <label for="large">Large</label><br/>
-
-      <input type="radio" id="xlarge" name="size" value="xlarge">
-          <label for="large">xLarge</label><br/>
-     
+      <input type="radio" id="toy" name="breedgroup" value="toy">
+        <label for="toy">Toy</label><br/>
+      <input type="radio" id="terrier" name="breedgroup" value="terrier">
+        <label for="terrier">Terrier</label><br/>
+      <input type="radio" id="working" name="breedgroup" value="working">
+        <label for="large">Working</label><br/>
+      <input type="radio" id="mixed" name="breedgroup" value="mixed">
+          <label for="large">Mixed</label><br/>
+      <input type="radio" id="non-sporting" name="breedgroup" value="non-sporting">
+          <label for="large">Non-Sporting</label><br/>
+      <input type="radio" id="herding" name="breedgroup" value="herding">
+          <label for="large">Herding</label><br/>
+      <input type="radio" id="hound" name="breedgroup" value="hound">
+          <label for="hound">Hound</label><br/>
+      <button type="button" onclick="checkButton()"> Submit </button>
     </form>
-    <button type="button" onclick=" checkButton()"> Submit </button>  
+      
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.2.2/marked.min.js"></script>
 

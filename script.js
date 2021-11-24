@@ -9,6 +9,8 @@ const main = document.getElementById('main')
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 
+let radio_result = ''
+
 // DOGS /////////////////////////////////////////////////////////////
 getDogs(API_URL)
 
@@ -17,7 +19,10 @@ async function getDogs(url) {
     const data = await res.json()
 
     // console.log(data)
-    showDogs(data)
+
+    // Maybe run a compare function here for the filter?
+    filtered_data = dogfilter(data)
+    showDogs(filtered_data)
 }
 
 function showDogs(dogs) {
@@ -29,23 +34,20 @@ function showDogs(dogs) {
         const dogEl = document.createElement('div')
         dogEl.classList.add('dog')
 
-        // Maybe run a compare function here for the filter?
-        if(dogfilter(weight.imperial)){
-            dogEl.innerHTML = `
-            <img src="${image.url}" alt="${name}">
-            <div class="dog-info">
-                <h3>${name}</h3>
-            </div>
-            <button class="dog-bookmark"><i class="far fa-bookmark"></i></button>
-            <div class="overview">
-                <b>Breed Group:  </b>${breed_group}<br>
-                <b>Lifespan:  </b>${life_span}<br>
-                <b>Weight:  </b>${weight.imperial} lbs<br>
-                <b>Temperament:  </b>${temperament}<br>
-                <b>Origin: </b>${origin}<br>
-            </div>
+        dogEl.innerHTML = `
+        <img src="${image.url}" alt="${name}">
+        <div class="dog-info">
+            <h3>${name}</h3>
+        </div>
+        <button class="dog-bookmark"><i class="far fa-bookmark"></i></button>
+        <div class="overview">
+            <b>Breed Group:  </b>${breed_group}<br>
+            <b>Lifespan:  </b>${life_span}<br>
+            <b>Weight:  </b>${weight.imperial} lbs<br>
+            <b>Temperament:  </b>${temperament}<br>
+            <b>Origin: </b>${origin}<br>
+        </div>
         `
-
         // main.appendChild(dogEl); // uDemysoln
 
         // DOG BOOKMARK //////////////////////////////////
@@ -53,9 +55,7 @@ function showDogs(dogs) {
         bookmarkBtn.addEventListener('click', () => {
             dogEl.classList.toggle('active')
         })
-        }
-
-    document.getElementById("animals").appendChild(dogEl);
+        document.getElementById("animals").appendChild(dogEl);
     })
 }
 
@@ -121,9 +121,7 @@ function addNewNote(text = '') {
 
     textArea.addEventListener('input', (e) => {
         const { value } = e.target
-
         main.innerHTML = marked(value)
-
         updateLS()
     })
 
@@ -161,52 +159,63 @@ toggle.addEventListener('click', () => {
 
 // FILTER /////////////////////////////////////////////////////////////
 
-
-// Small dogs. 2 to 22 pounds 
-// Medium dogs. 24 to 57 pounds
-// Large dogs. 59 to 99 pounds
-// Giant or Extra Large dogs. 100 or more pounds
-
 checkButton()
 
-function dogfilter(weight){
+
+function dogfilter(dogs_unfiltered){
     
-    let size = checkButton()
-    let firstWord = weight.split(" ")[0]
-    
-    // console.log(firstWord)
-    
-    console.log("size " + size)
-    console.log("weight " + firstWord)
-    if(size <= weight){
-        return true
-    }
-    
-    return true
+    // let breed = checkButton()
+
+    let filtered_dog = []
+
+    dogs_unfiltered.forEach((dog) => {
+        const {name, image, breed_group, life_span, weight, temperament, origin} = dog
+
+        console.log("check button: "+ radio_result + ", " + breed_group)
+
+        if(radio_result === breed_group || radio_result === "none"){
+            filtered_dog.push(dog)
+        }        
+    })
+    return filtered_dog
 }
 
 function checkButton(){
+    // ocument.getElementById(container).innerHTML = ''
     if(document.getElementById('none').checked){
         console.log("none")
-        return 0
+        radio_result = "none"
     }
-    else if(document.getElementById('small').checked){
-        console.log("small")
-        return 22
+    else if(document.getElementById('toy').checked){
+        console.log("toy")
+        radio_result = "Toy"
     }
-    else if(document.getElementById('medium').checked){
-        console.log("medium")
-        return 57
+    else if(document.getElementById('terrier').checked){
+        console.log("terrier")
+        radio_result = "Terrier"
     }
-    else if(document.getElementById('large').checked){
-        console.log("large")
-        return 99
+    else if(document.getElementById('working').checked){
+        console.log("working")
+        radio_result = "Working"
     }
-    else if(document.getElementById('xlarge').checked){
-        console.log("xlarge")
-        return 300
+    else if(document.getElementById('mixed').checked){
+        console.log("mixed")
+        radio_result = "Mixed"
+    }
+    else if(document.getElementById('non-sporting').checked){
+        console.log("non-sporting")
+        radio_result = "Non-Sporting"
+    }
+    else if(document.getElementById('herding').checked){
+        console.log("herding")
+        radio_result = "Herding"
+    }
+    else if(document.getElementById('hound').checked){
+        console.log("hound")
+        radio_result = "Hound"
     }
     else{
-        return 0
+        radio_result = "none"
     }
+    getDogs(API_URL)
 }
